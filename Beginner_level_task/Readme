@@ -1,0 +1,49 @@
+Python Development Domain - Slab 1 [Beginner]
+This directory contains the completed beginner-level tasks for the QSkill Python Development Internship. These projects demonstrate core competencies in data handling, predictive modeling, and mathematical application development.
+
+🚀 Projects Overview
+1. Data Analysis & Visualization
+Objective: Extract actionable insights from raw data using statistical analysis and graphical representations.
+
+Core Logic: Utilized Pandas for data manipulation and Seaborn/Matplotlib for visualization.
+
+Key Achievement: Developed a script that automatically generates correlation heatmaps and distribution charts to identify data trends.
+
+2. House Price Prediction Model
+Objective: Predict real estate pricing based on physical attributes using supervised learning.
+
+Core Logic: Implemented a Linear Regression algorithm using Scikit-Learn.
+
+Key Achievement: Successfully trained a model with high predictive accuracy (R-squared score) and visualized the variance between actual and predicted values.
+
+3. Matrix Operations Tool
+Objective: Build a command-line interface (CLI) for advanced linear algebra operations.
+
+Core Logic: Leveraged NumPy for high-performance array computations.
+
+Key Achievement: Created an interactive menu-driven system that handles transposition, determinants, and matrix arithmetic with error handling for dimension mismatches.
+
+🛠️ Technical Skills Demonstrated
+Data Science Stack: NumPy, Pandas, Scikit-Learn.
+
+Visualization: Matplotlib, Seaborn.
+
+Programming: CLI development, Object-Oriented concepts, and error handling.
+
+Version Control: Git/GitHub for professional code management.
+
+💻 Installation & Execution
+To run any of the tasks locally, follow these steps:
+
+Install Dependencies:
+
+Bash
+pip install pandas numpy scikit-learn matplotlib seaborn
+Navigate to the Task Folder:
+
+Bash
+cd Task_1  # or Task_2, Task_3
+Execute the Script:
+
+Bash
+python <filename>.py
