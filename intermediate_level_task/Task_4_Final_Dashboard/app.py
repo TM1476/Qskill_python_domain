@@ -15,14 +15,25 @@ def index():
 @app.route('/analyze', methods=['POST'])
 def analyze():
     text = request.form.get('sentiment_text', '')
-    blob = TextBlob(text)
-    polarity = round(blob.sentiment.polarity, 2)
     
-    if polarity > 0: result, color = "Positive", "success"
-    elif polarity < 0: result, color = "Negative", "danger"
-    else: result, color = "Neutral", "secondary"
-    
-    return render_template('dashboard.html', sentiment_res=result, pol=polarity, original_text=text, color=color)
+    try:
+        blob = TextBlob(text)
+        polarity = round(blob.sentiment.polarity, 2)
+        
+        if polarity > 0: 
+            result, color = "Positive", "success"
+        elif polarity < 0: 
+            result, color = "Negative", "danger"
+        else: 
+            result, color = "Neutral", "secondary"
+    except Exception as e:
+        result, color, polarity = "Error", "warning", 0
+
+    return render_template('index.html', 
+                           sentiment_res=result, 
+                           pol=polarity, 
+                           original_text=text, 
+                           color=color)
 
 @app.route('/search', methods=['POST'])
 def ai_search():
@@ -33,7 +44,7 @@ def ai_search():
     try:
         for res in search(query, num_results=3):
             context += f"Source: {res}\n"
-    except:
+    except Exception:
         context = "No live web data found."
 
     try:
@@ -41,9 +52,11 @@ def ai_search():
         response = client.models.generate_content(model="gemini-2.0-flash", contents=prompt)
         answer = response.text
     except Exception as e:
-        answer = f"Error: {e}"
+        answer = f"Error calling Gemini: {e}"
 
-    return render_template('dashboard.html', search_answer=answer, user_query=query)
+    return render_template('index.html', 
+                           search_answer=answer, 
+                           user_query=query)
 
 if __name__ == '__main__':
     app.run(debug=True)
