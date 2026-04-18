@@ -1,4 +1,4 @@
-🚀 QSkill Python & AI Internship: Slab 1 & 2
+#🚀 QSkill Python & AI Internship: Slab 1 & 2#
 Intern: Mahalakshmi Kamaraj
 
 Domain: Python & AI Development
