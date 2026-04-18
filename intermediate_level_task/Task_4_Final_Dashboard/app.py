@@ -4,11 +4,8 @@ from google import genai
 from googlesearch import search
 import time
 
-# Looks for index.html in the same folder
 app = Flask(__name__, template_folder='.')
 
-# --- Configuration ---
-# Use your verified API Key here
 GEMINI_API_KEY = "AIzaSyAgSySyvQF_Demn6nI2v0G5iqCOkZu_N8I"
 client = genai.Client(api_key=GEMINI_API_KEY)
 
@@ -35,25 +32,21 @@ def ai_search():
     query = request.form.get('search_query', '')
     context = ""
     
-    # 1. Fetching Search Results
     try:
         for res in search(query, num_results=3):
             context += f"Source: {res}\n"
     except:
         context = "No live web data found."
 
-    # 2. AI Processing
     try:
         prompt = f"Using these sources, answer briefly: {query}\n\nSources:\n{context}"
         
-        # Try gemini-2.0-flash without any prefixes
         response = client.models.generate_content(
             model="gemini-2.0-flash", 
             contents=prompt
         )
         answer = response.text
     except Exception as e:
-        # If 2.0 fails, it usually defaults to a quota error (429)
         if "429" in str(e):
             answer = "Quota exceeded. Please wait 60 seconds and try again."
         elif "404" in str(e):
