@@ -18,7 +18,7 @@ def ask_gemini(query):
     web_data = get_web_context(query)
 
     prompt = (
-        f"You are a QSkill Research Assistant. Answer the user's question based on "
+        f"You are a Research Assistant. Answer the user's question based on "
         f"these web sources.\n\nQuestion: {query}\n\nSources:\n{web_data}"
     )
 
@@ -29,7 +29,7 @@ def ask_gemini(query):
     return response.text
 
 def main():
-    print("=== QSkill AI Search Assistant (Gemini 2.0) ===")
+    print("===AI Search Assistant (Gemini 2.0) ===")
     print("Type 'exit' to quit.")
     
     while True:
