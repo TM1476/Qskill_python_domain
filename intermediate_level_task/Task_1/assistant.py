@@ -19,7 +19,7 @@ def get_text_command():
     return query.lower()
 
 def run_assistant():
-    speak("Hello, I am your Q-Skill assistant. Since the microphone is offline, please type your commands.")
+    speak("Hello, I am your AI ssistant. Since the microphone is offline, please type your commands.")
     
     while True:
         command = get_text_command()
